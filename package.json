@@ -4,7 +4,7 @@
   "description": "aplicación tipo workflow desarrollado con express y mongodb",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=dev npx nodemon src/app.js"
+    "dev": "NODE_ENV=dev npx nodemon src/server.js"
   },
   "repository": {
     "type": "git",
