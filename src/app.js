@@ -1,19 +1,18 @@
 const express = require('express');
-const cookie = require('cookie-parser');
+const cookies= require('cookie-parser');
 const { connection } = require('./config/database/mongo');
+const router = require('./router');
 const app = express();
 
 /* middleware */
 app.use(express.json());
-app.use(cookie());
+app.use(cookies());
 //TODO: configurar cors
 
 /*  Database */
 connection();
 
 /* Routes */
-app.get('/', (req, res)=>{
-  res.send('<h1>Workflow</h1>')
-})
+app.use('/api', router)
 
 module.exports = app;
