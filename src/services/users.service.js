@@ -1,4 +1,4 @@
-const UsersModel = require("../models/user");
+const {UsersModel} = require("../models");
 
 class Users{
   async create(data){
@@ -6,8 +6,12 @@ class Users{
     return {success: true, message:'Usuario creado exitosamente', data: saveData}
   }
 
-  async getall(){
-    return await UsersModel.find();
+  async getAll(filter){
+    const data = await UsersModel.find(filter);
+    if(data.length>0){
+      return {success:true, data}
+    }
+    return {success:false, message: 'Usuario no encontrado'}
   }
 
   async get(filter){

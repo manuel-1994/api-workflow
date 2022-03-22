@@ -4,7 +4,7 @@ const tokenToCookie = (res, data) =>{
     return res.cookie('token', data.token, {
       httpOnly: true,
       sameSite:"none",
-      secure: true,
+      secure: false,
       expires: date
     }).json(data)
   }

@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const { isRegular } = require("../middleware/authValidation");
 const { Users } = require("../services");
 
 const users = (app) =>{
@@ -7,12 +8,12 @@ const users = (app) =>{
   app.use('/users', router);
 
   router.get('/', async(req,res)=>{
-    const result = await userService.getall()
+    const result = await userService.getAll(req.body)
     return res.json(result)
   })
 
-  router.get('/:id',  async (req,res)=>{
-    const result = await userService.get({_id:req.params.id})
+  router.get('/profile', isRegular ,async (req,res)=>{
+    const result = await userService.get({_id: req.user.id})
     return res.status(200).json(result)
   })
 

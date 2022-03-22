@@ -6,7 +6,7 @@ const useGoogleStrategy = ()=>{
   return new GoogleStrategy({
       clientID:oauth_client_id,
       clientSecret:oauth_client_secret,
-      callbackURL:"/api/auth/google/callback"
+      callbackURL: callback_url
   },(accessToken,refreshToken,profile,done)=>{
       //console.log({accessToken,refreshToken,profile})
       done(null,{profile})
