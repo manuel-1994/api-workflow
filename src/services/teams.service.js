@@ -17,7 +17,10 @@ class Teams{
   }
 
   async get(idTeam){
-     return await TeamsModel.findOne({_id:idTeam}).populate("members._id", 'name email');
+    const data = await TeamsModel.findOne({_id:idTeam}).populate("members._id", "name email").populate("boards._id")
+    if(data) return {success:true, data}
+    
+    return {success:false, message: "El equipo de trabajo no existe"}
   }
 
   async update(idTeam,data){

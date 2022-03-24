@@ -22,7 +22,7 @@ const teamsSchema = new Schema({
   ],
   boards:[
     {
-      id: {
+      _id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'boards'
       }

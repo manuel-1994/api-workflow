@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { isRegular } = require("../middleware/authValidation");
-const Teams = require("../services/teams.service");
+const { Teams } = require("../services");
 
 const teams = (app)=>{
   const router = Router();
